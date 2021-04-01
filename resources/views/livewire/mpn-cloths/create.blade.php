@@ -10,43 +10,63 @@
             <form>
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="">
-
                         <div class="mb-4">
-                            <label for="total_cost" class="block text-gray-700 text-sm font-bold mb-2">Total Cost:</label>
-                            <input type="number"
+                            <label for="type" class="block text-gray-700 text-sm font-bold mb-2">Type:</label>
+                            <input type="text"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="total_cost" placeholder="Enter total cost" wire:model="total_cost">
-                            @error('total_cost') <span class="text-red-500">{{ $message }}</span>@enderror
+                                id="type" placeholder="Enter Title" wire:model="type">
+                            @error('type') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
-
                         <div class="mb-4">
-                            <label for="amount_perceived" class="block text-gray-700 text-sm font-bold mb-2">Amount Percieved:</label>
-                            <input type="number"
+                            <label for="material" class="block text-gray-700 text-sm font-bold mb-2">Material:</label>
+                            <input type="text"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="amount_perceived" placeholder="Enter amount perceived" wire:model="amount_perceived">
-                            @error('amount_perceived') <span class="text-red-500">{{ $message }}</span>@enderror
+                                id="material" placeholder="Enter Title" wire:model="material">
+                            @error('material') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
-
                         <div class="mb-4">
-                            <label for="predicted_return" class="block text-gray-700 text-sm font-bold mb-2">Predicted Return Date:</label>
-                            <input type="date"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="predicted_return" placeholder="Enter Predicted return date" wire:model="predicted_return">
-                            @error('predicted_return') <span class="text-red-500">{{ $message }}</span>@enderror
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="client" class="block text-gray-700 text-sm font-bold mb-2">Client</label>
-                            <select name="client" id="client" wire:model="client"
+                            <label for="color" class="block text-gray-700 text-sm font-bold mb-2">Color:</label>
+                            <select name="color" id="color" wire:model="color"
                                 class="shadow appearance-none w-full border text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline">
-                                <option value="" selected>Select Client</option>
-                                @foreach ($clients as $client)
-                                    <option value="{{ $client->id }}">{{ $client->first_name }} {{ $client->last_name }}</option>
+                                <option value="" selected>Select Color</option>
+                                <option value="#ffffff">white</option>
+                                <option value="#000000">black</option>
+                                <option value="blue">blue</option>
+                                <option value="pink">pink</option>
+                                <option value="green">green</option>
+                                <option value="violet">violet</option>
+                            </select>
+                            @error('color') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Description:</label>
+                            <textarea rows="4"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="description" wire:model="description" placeholder="Enter cloth description"></textarea>
+                            @error('description') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Price:</label>
+                            <input type="number"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="price" placeholder="Enter Price" wire:model="price">
+                            @error('price') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="id_order" class="block text-gray-700 text-sm font-bold mb-2">Order:</label>
+                            <select name="id_order" id="id_order" wire:model="id_order"
+                                class="shadow appearance-none w-full border text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="" selected>Select Order</option>
+                                @foreach ($orders as $order)
+                                    <option value="{{ $order->id }}">{{ $order->code }}</option>
                                 @endforeach
                             </select>
-                            @error('client') <span class="text-red-500">{{ $message }}</span>@enderror
+                            @error('id_order') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
-
+                        
                         <div class="mb-4">
                             <label for="return_status" class="block text-gray-700 text-sm font-bold mb-2">Return Status</label>
                             <select name="return_status" id="return_status" wire:model="return_status" required
@@ -72,11 +92,13 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="additional_intel" class="block text-gray-700 text-sm font-bold mb-2">Additional Intel:</label>
-                            <textarea rows="4"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="additional_intel" wire:model="additional_intel" placeholder="Enter additional info"></textarea>
-                            @error('additional_intel') <span class="text-red-500">{{ $message }}</span>@enderror
+                            <label for="tagids" class="block text-gray-700 text-sm font-bold mb-2">Tags:</label>
+                            <select multiple name="tagids[]" id="tagids[]" wire:model="tagids"
+                                class="shadow appearance-none w-full border text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline">
+                                @foreach ($tags as $tag)
+                                    <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>

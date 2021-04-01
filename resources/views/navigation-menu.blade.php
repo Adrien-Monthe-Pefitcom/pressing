@@ -15,21 +15,21 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('dashboard-order') }}" :active="request()->routeIs('dashboard-order')">
+                    <x-jet-nav-link href="{{ route('orders') }}" :active="request()->routeIs('orders')">
                         {{ __('Order List') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('clients') }}" :active="request()->routeIs('clients')">
                         {{ __('Client List') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('dashboard-cloth') }}" :active="request()->routeIs('dashboard-cloth')">
+                    <x-jet-nav-link href="{{ route('cloths') }}" :active="request()->routeIs('cloths')">
                         {{ __('Cloth List') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('categories') }}" :active="request()->routeIs('categories')">
+                    <!--<x-jet-nav-link href="{{ route('categories') }}" :active="request()->routeIs('categories')">
                         {{ __('Categories List') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('posts') }}" :active="request()->routeIs('posts')">
                         {{ __('Posts List') }}
-                    </x-jet-nav-link>
+                    </x-jet-nav-link>  -->
                     <x-jet-nav-link href="{{ route('tags') }}" :active="request()->routeIs('tags')">
                         {{ __('Tags List') }}
                     </x-jet-nav-link>

@@ -17,7 +17,7 @@ class MpnCloths extends Component
 {
     use WithPagination;
     use WithFileUploads;
-    public $type, $material, $color, $description, $state, $price, $collected, $return_status, $id_order, $client_id;
+    public $type, $material, $color, $description, $state, $price, $collected, $return_status, $id_order, $client_id, $cloth_id;
     public $tagids = array();
     public $isOpen = 0;
 
@@ -40,12 +40,12 @@ class MpnCloths extends Component
             'id_order' => 'required',
         ]);
         // Update or Insert Post
-        $cloth = Cloth::updateOrCreate(['id' => $this->post_id], [
+        $cloth = Cloth::updateOrCreate(['id' => $this->cloth_id], [
             'type' => $this->type,
-            'material' => $this->content,
-            'id_order' => intVal($this->order),
+            'material' => $this->material,
+            'id_order' => intVal($this->id_order),
             'color' => $this->color,
-            'price' => $this->price,
+            'price' => intVal($this->price),
             'state' => $this->state,
             'description' => $this->description,
             'collected' => $this->collected,

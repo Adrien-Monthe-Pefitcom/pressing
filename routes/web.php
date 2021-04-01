@@ -6,6 +6,7 @@ use App\Http\Livewire\MpnClient\MpnClient;
 use App\Http\Livewire\MpnClient\Client_order;
 use App\Http\Livewire\Order\Mpn_Order;
 use App\Http\Livewire\Categories\Categoryposts;
+use App\Http\Livewire\MpnCloths\MpnCloths;
 use App\Http\Livewire\Posts\Posts;
 use App\Http\Livewire\Posts\Post as p;
 use App\Http\Livewire\Tags\Tagposts;
@@ -49,6 +50,8 @@ Route::get('dashboard/categories', Categories::class)->name('categories');
 Route::get('dashboard/clients', MpnClient::class)->name('clients');
 
 Route::get('dashboard/orders', Mpn_Order::class)->name('orders');
+
+Route::get('dashboard/cloths', MpnCloths::class)->name('cloths');
 
 Route::get('dashboard/categories/{id}/posts', Categoryposts::class);
 Route::get('dashboard/clients/{id}/orders', Client_order::class);
